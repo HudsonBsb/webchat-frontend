@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chat</title>
+</head>
+
+<body>
+    <div class="container-fluid h-100">
+        <div class="row justify-content-center h-100">
+            <div #contactsView class="col-md-4 col-xl-3 chat contacts-card">
+                <app-contacts (modalOpen)="onOpenModal()" (toggleView)="toggleViews('contact')"></app-contacts>
+            </div>
+            <div #chatView class="col-md-8 col-xl-6 chat">
+                <app-chat (modalOpen)="onOpenModal()" (toggleView)="toggleViews('chat')"></app-chat>
+            </div>
+        </div>
+    </div>
+    <app-modal></app-modal>
+</body>
+
+</html>

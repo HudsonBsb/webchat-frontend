@@ -1,0 +1,83 @@
+<div class="card chat-card">
+    <div class="card-header msg_card_header" *ngIf="user$ | async as user">
+        <div class="d-flex bd-highlight">
+            <div class="img_cont">
+                <img [src]="user.image ? api + user.image : getImage(user)" class="rounded-circle user_img">
+                <!-- <span class="online_icon"></span> -->
+            </div>
+            <div class="user_info">
+                <span>{{user.name | maxLengthName}}</span>
+                <p>{{(messages$ | async)?.length || '0'}} menssagens</p>
+            </div>
+            <!-- <div class="video_cam">
+            <span><i class="fas fa-video"></i></span>
+            <span><i class="fas fa-phone"></i></span>
+        </div> -->
+        </div>
+        <span id="action_menu_btn" (click)="toggleMenu(menu)"><i class="fas fa-ellipsis-v"></i></span>
+        <div #menu class="action_menu">
+            <ul (click)="toggleMenu(menu)">
+                <li (click)="openModal()"><i class="fas fa-user-circle"></i> Mudar foto</li>
+                <li (click)="toggleContacts()"><i class="fas fa-users"></i> Ver usuários online</li>
+                <!-- <li><i class="fas fa-plus"></i> Add to group</li> -->
+                <li onclick="location.reload()"><i class="fa fa-power-off"></i> Sair</li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-body msg_card_body" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+        <div *ngFor="let msg of messages$ | async" [class]="getClassesAlignMessages(msg?.user, (user$ | async))">
+            <div *ngIf="msg.onConnect || msg.onDisconnect; else notConnectOrDisconnect" class="msg_cotainer_connect_disconnect">
+                {{msg?.message}}
+            </div>
+            <ng-template #notConnectOrDisconnect>
+                <ng-template [ngIf]="msg?.user?.name === (user$ | async)?.name" [ngIfElse]="notUser">
+                    <div class="img_cont_msg">
+                        <img [src]="msg?.user?.image ? api + msg?.user?.image : getImage(msg?.user)" class="rounded-circle user_img_msg">
+                    </div>
+                    <div *ngIf="msg?.private; else notPrivate" class="msg_cotainer_private">
+                        <p class="msg_user_name">Você privadamente para {{msg?.userPrivate?.name}}: </p>
+                        {{msg?.message}}
+                        <span class="msg_time">{{msg?.time | date: 'HH:mm'}}</span>
+                    </div>
+                    <ng-template #notPrivate>
+                        <div class="msg_cotainer">
+                            <p class="msg_user_name">{{'Você diz: '}}</p>
+                            {{msg?.message}}
+                            <span class="msg_time">{{msg?.time | date: 'HH:mm'}}</span>
+                        </div>
+                    </ng-template>
+                </ng-template>
+                <ng-template #notUser>
+                    <div *ngIf="msg?.private; else notPrivateSend" class="msg_cotainer_send_private">
+                        <p class="msg_user_name">{{msg?.user?.name + ' privadamente para você: '}}</p>
+                        {{msg?.message}}
+                        <span class="msg_time_send">{{msg?.time | date: 'HH:mm'}}</span>
+                    </div>
+                    <ng-template #notPrivateSend>
+                        <div class="msg_cotainer_send">
+                            <p class="msg_user_name">{{msg?.user?.name + ' diz: '}}</p>
+                            {{msg?.message}}
+                            <span class="msg_time_send">{{msg?.time | date: 'HH:mm'}}</span>
+                        </div>
+                    </ng-template>
+                    <div class="img_cont_msg">
+                        <img [src]="msg?.user?.image ? api + msg?.user?.image : getImage(msg?.user)" class="rounded-circle user_img_msg">
+                    </div>
+                </ng-template>
+            </ng-template>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="input-group">
+            <div class="input-group-append">
+                <span class="input-group-text attach_btn">
+                <!-- <i class="fas fa-paperclip"></i> -->
+            </span>
+            </div>
+            <textarea name="" class="form-control type_msg" [maxLength]="275" [(ngModel)]="message" placeholder="Digite sua mensagem..."></textarea>
+            <div class="input-group-append" (click)="sendMessage()">
+                <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+            </div>
+        </div>
+    </div>
+</div>

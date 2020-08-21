@@ -1,0 +1,24 @@
+<div #modal class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-12">
+                <span class="close" (click)="closeModal()">&times;</span>
+            </div>
+        </div>
+        <div class="row" style="padding: 2%; padding-left: 5%; padding-right: 5%;">
+            <div class="col-12 text-center" style="padding: 2%;">
+                <img #imageToChange [src]="userService?.user?.image ? api + userService?.user?.image : getImage(userService?.user)" class="rounded-circle img_temp">
+            </div>
+            <div class="col-12" style="padding: 1%;">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" accept="image/*" (change)="changeFile($event)">
+                    <label #inputLabel class="custom-file-label" data-browser="Imagem">Selecione a imagem...</label>
+                </div>
+            </div>
+            <div class="col-12 btn-group" style="padding: 1%;">
+                <button class="btn btn-primary" (click)="saveImage()" style="margin-right: 1%;">Enviar</button>
+                <button class="btn btn-light" (click)="closeModal()" style="margin-left: 1%;">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

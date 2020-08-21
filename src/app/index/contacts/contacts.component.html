@@ -1,0 +1,67 @@
+<div class="card contact-card mb-sm-3 mb-md-0">
+    <div class="card-header contacts_card_header">
+        <div class="d-flex bd-highlight" *ngIf="user$ | async as user">
+            <div class="img_cont" (click)="openModal()">
+                <img [src]="user.image ? api + user.image : getImage(user)" class="rounded-circle user_img">
+                <img [src]="" class="rounded-circle user_btn">
+                <p class="user_edit">Mudar</p>
+                <!-- <span class="online_icon"></span> -->
+            </div>
+            <div class="user_info">
+                <span>{{user.name | maxLengthName}}</span>
+            </div>
+            <!-- <div class="video_cam">
+            <span><i class="fas fa-video"></i></span>
+            <span><i class="fas fa-phone"></i></span>
+        </div> -->
+        </div>
+        <span id="action_menu_btn" (click)="toggleMenu(menu)"><i class="fas fa-ellipsis-v"></i></span>
+        <div #menu class="action_menu">
+            <ul (click)="toggleMenu(menu)">
+                <li (click)="openModal()"><i class="fas fa-user-circle"></i> Mudar foto</li>
+                <li (click)="toggleChat()"><i class="fas fa-comments"></i> Ver chat</li>
+                <!-- <li><i class="fas fa-plus"></i> Add to group</li> -->
+                <li onclick="location.reload()"><i class="fa fa-power-off"></i> Sair</li>
+            </ul>
+        </div>
+        <div class="input-group" style="padding-top: 10px;">
+            <input type="text" [(ngModel)]="search" placeholder="Procurar..." class="form-control search">
+            <div class="input-group-prepend" style="margin-right: 0px;" (click)="clearSearch()">
+                <span *ngIf="isRemoveIcon" class="input-group-text icn_remove"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="input-group-prepend" (click)="findUser()">
+                <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="card-body contacts_body">
+        <div ui class="contacts">
+            <!-- <li *ngIf="user$ | async as user" class="my-user">
+                <div class="d-flex bd-highlight">
+                    <div class="img_cont" (click)="openModal()">
+                        <img [src]="user.image ? api + user.image : getImage(user)" class="rounded-circle user_img">
+                        <img [src]="" class="rounded-circle user_btn">
+                        <p class="user_edit">Mudar</p>
+                    </div>
+                    <div class="user_info">
+                        <span>{{user.name | maxLengthName}}</span>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="icon_config_user"><i class="fa fa-cog"></i></span>
+                    </div>
+                </div>
+            </li> -->
+            <li [ngClass]="{'others': true, 'active': userSelected === user}" (click)="selectUser(user)" *ngFor="let user of users$ | async">
+                <div class="d-flex bd-highlight">
+                    <div class="img_cont">
+                        <img [src]="user.image ? api + user.image : getImage(user)" class="rounded-circle user_img">
+                    </div>
+                    <div class="user_info">
+                        <span>{{user.name | maxLengthName}}</span>
+                    </div>
+                </div>
+            </li>
+        </div>
+    </div>
+    <div class="card-footer contacts-footer"></div>
+</div>

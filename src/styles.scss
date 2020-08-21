@@ -1,0 +1,542 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css');
+body,
+html {
+    height: 100%;
+    margin: 0;
+    background: #7f7fd5;
+    background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+    background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+}
+
+
+/** modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    align-content: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-animation: fade-in 1s ease-in fade-out 1s ease-out;
+    animation: fade-in 1s ease-in fade-out 1s ease-out;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 560px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    right: 0;
+    top: 0;
+    padding: 0px 6px;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(216, 216, 216);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.img_temp {
+    width: 150px;
+    height: 150px;
+    border: 1.5px solid #f5f6fa;
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+
+/** fim do modal */
+
+.icn_remove {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    color: white;
+    cursor: pointer;
+}
+
+.icon_config_user {
+    display: flex;
+    align-items: center;
+    padding-left: 80%;
+    color: #ffffff;
+}
+
+.chat {
+    display: block;
+    padding: 1%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.card {
+    height: 630px;
+    border-radius: 15px !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.contacts_body {
+    padding: 0.75rem 0 !important;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+.msg_card_body {
+    overflow-y: auto;
+}
+
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+    border-bottom: 0 !important;
+}
+
+.card-footer {
+    border-radius: 0 0 15px 15px !important;
+    border-top: 0 !important;
+}
+
+.container {
+    align-content: center;
+}
+
+.search {
+    border-radius: 15px 0 0 15px !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+}
+
+.search:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+.type_msg {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    height: 60px !important;
+    overflow-y: auto;
+}
+
+.type_msg:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+.attach_btn {
+    border-radius: 15px 0 0 15px !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.send_btn {
+    border-radius: 0 15px 15px 0 !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.search_btn {
+    border-radius: 0 15px 15px 0 !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.contacts {
+    list-style: none;
+    padding: 0;
+    overflow-y: auto;
+    max-height: 544px;
+}
+
+.contacts li {
+    width: 100% !important;
+    padding: 5px 10px;
+    margin-bottom: 15px !important;
+}
+
+.contacts li:hover {
+    cursor: pointer;
+}
+
+.active {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.user_img {
+    height: 70px;
+    width: 70px;
+    border: 1.5px solid #f5f6fa;
+}
+
+.user_img_msg {
+    height: 40px;
+    width: 40px;
+    border: 1.5px solid #f5f6fa;
+}
+
+.img_cont {
+    cursor: pointer;
+    position: relative;
+    height: 70px;
+    width: 70px;
+}
+
+.user_btn {
+    display: none;
+}
+
+.user_edit {
+    display: none;
+}
+
+.img_cont:hover {
+    .user_btn {
+        display: block;
+        transition: 12ms;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        background-color: black;
+        opacity: 0.7;
+        padding: 50%;
+        border: 0.5px solid #f5f6fa;
+    }
+    .user_edit {
+        display: block;
+        transition: 12ms;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        color: white;
+    }
+}
+
+.img_cont_msg {
+    height: 40px;
+    width: 40px;
+}
+
+.online_icon {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: #4cd137;
+    border-radius: 50%;
+    bottom: 0.2em;
+    right: 0.4em;
+    border: 1.5px solid white;
+}
+
+.offline {
+    background-color: #c23616 !important;
+}
+
+.user_info {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+}
+
+.user_info span {
+    font-size: 20px;
+    color: white;
+}
+
+.user_info p {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.video_cam {
+    margin-left: 50px;
+    margin-top: 5px;
+}
+
+.video_cam span {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.msg_user_name {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 0%;
+}
+
+.msg_cotainer {
+    max-width: 90%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 25px;
+    background-color: #82ccdd;
+    padding: 10px;
+    position: relative;
+}
+
+.msg_cotainer_connect_disconnect {
+    align-content: center;
+    font-size: 12px;
+    max-width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+    padding: 2px;
+    margin: 10px;
+    position: relative;
+}
+
+.msg_cotainer_private {
+    max-width: 90%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    padding: 10px;
+    position: relative;
+}
+
+.msg_cotainer_send {
+    max-width: 90%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    border-radius: 25px;
+    background-color: #78e08f;
+    padding: 10px;
+    position: relative;
+}
+
+.msg_cotainer_send_private {
+    max-width: 90%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    padding: 10px;
+    position: relative;
+}
+
+.msg_time {
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+}
+
+.msg_time_send {
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+}
+
+.msg_card_header {
+    display: none;
+}
+
+#action_menu_btn {
+    display: none;
+}
+
+#action_menu_btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.action_menu {
+    z-index: 1;
+    position: absolute;
+    padding: 15px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 15px;
+    top: 30px;
+    right: 15px;
+    display: none;
+}
+
+.action_menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.action_menu ul li {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+}
+
+.action_menu ul li i {
+    padding-right: 10px;
+}
+
+.action_menu ul li:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 576px) {
+    #action_menu_btn {
+        display: block;
+    }
+    .my-user {
+        display: none;
+    }
+    .chat {
+        padding: 0% !important;
+        border-radius: 0px !important;
+    }
+    .contacts-card {
+        display: none;
+    }
+    .card.chat-card {
+        height: 100vh !important;
+    }
+    .card.contact-card {
+        height: 100vh !important;
+    }
+    .msg_card_header {
+        display: block;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .contacts_card_header {
+        display: block;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .contacts_card {
+        margin-bottom: 15px !important;
+    }
+    .msg_cotainer_connect_disconnect {
+        align-content: center;
+        max-width: 100%;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 10px;
+        border-radius: 25px;
+        background-color: rgba(0, 0, 0, 0.3);
+        text-align: center;
+        color: white;
+        padding: 5px;
+        position: relative;
+    }
+    .msg_cotainer {
+        max-width: 80%;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 10px;
+        border-radius: 25px;
+        background-color: #82ccdd;
+        padding: 10px;
+        position: relative;
+    }
+    .msg_cotainer_private {
+        max-width: 90%;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 10px;
+        border-radius: 25px;
+        background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+        padding: 10px;
+        position: relative;
+    }
+    .msg_cotainer_send {
+        max-width: 80%;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-right: 10px;
+        border-radius: 25px;
+        background-color: #78e08f;
+        padding: 10px;
+        position: relative;
+    }
+    .msg_cotainer_send_private {
+        max-width: 80%;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-right: 10px;
+        border-radius: 25px;
+        background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+        padding: 10px;
+        position: relative;
+    }
+    .modal-content {
+        background-color: rgba(0, 0, 0, 0.6);
+        width: 95%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e7e7e7;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0.5);
+}
