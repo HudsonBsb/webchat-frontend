@@ -2,10 +2,6 @@
 
 Projeto feito usando Angular 8, ngrx, SockJS, Stomp, Java para backend com spring-boot 2, websocket spring-boot e Stomp.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
 ## Como iniciar
 
 - Clonar este projeto.
