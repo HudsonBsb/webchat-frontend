@@ -10,4 +10,4 @@ Projeto feito usando Angular 8, ngrx, SockJS, Stomp, Java para backend com sprin
 - Iniciar o frontend NodeJS e NPM instalado, `npm install`, `ng serve`.
 
 ### Link do chat na AWS
-`http://setapp-chat.s3-sa-east-1.amazonaws.com/index.html`
+http://setapp-chat.s3-sa-east-1.amazonaws.com/index.html
