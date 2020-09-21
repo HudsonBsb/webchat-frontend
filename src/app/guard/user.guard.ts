@@ -24,9 +24,9 @@ export class UserActivate implements CanActivate {
 
     verifyUserCookie(): boolean {
         const userCookie = this.cookieService.get(User.USER);
-        if (userCookie && userCookie.value) {
+        if (userCookie) {
             try {
-                const user: User = JSON.parse(userCookie.value);
+                const user: User = JSON.parse(userCookie);
                 const bool = !isNullOrUndefined(user.name) && !isNullOrUndefined(this.userService.user.name);
                 if (!bool) {
                     this.userService.clearUser();

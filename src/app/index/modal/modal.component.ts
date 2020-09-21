@@ -53,11 +53,11 @@ export class ModalComponent implements OnInit {
       } else {
         this.label.nativeElement.innerText = file.name;
       }
-      if(file.size > 10240){
+      if(file.size > 10000000){
         Swal.fire('Imagem maior que o máximo suportado de 10MB, escolha uma imagem de menor tamanho!', '', 'error');
         return;
       }
-      return file as File;
+      return file;
     }
   }
 

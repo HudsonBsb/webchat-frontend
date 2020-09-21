@@ -10,7 +10,7 @@ const initialState: ChatState = {
     error: null
 };
 
-export const ChatReducers = createReducer(initialState,
+const chatReducers = createReducer(initialState,
     on(ChatActions.loadedUsers, (state, { users }) => ({ ...state, users })),
     on(ChatActions.loadedUser, (state, { user }) => ({ ...state, user })),
     on(ChatActions.clearUser, (state) => ({ ...state, user: null })),
@@ -22,3 +22,7 @@ export const ChatReducers = createReducer(initialState,
         return ({ ...state, users });
     }),
 );
+
+export function ChatReducers(state, action) {
+    return chatReducers(state, action);
+} 
