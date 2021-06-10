@@ -9,8 +9,8 @@
 // };
 export const environment = {
   production: false,
-  api: 'https://springchat-web002.sa-east-1.elasticbeanstalk.com/api',
-  ws: 'https://springchat-web002.sa-east-1.elasticbeanstalk.com/ws'
+  api: 'https://api.prajogo.com.br/api',
+  ws: 'https://api.prajogo.com.br/ws'
   // api: 'http://localhost:8080/api',
   // ws: 'http://localhost:8080/ws'
 };
